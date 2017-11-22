@@ -1,0 +1,48 @@
+{% extends '@EasyAdmin/default/list.html.twig' %}
+
+{% block content_header %}
+    <div class="row">
+        <div class="col-sm-5">
+            {% block content_title_wrapper %}
+                <h1 class="title">{{ block('content_title') }}</h1>
+            {% endblock %}
+        </div>
+        <div class="col-sm-7">
+            <div class="global-actions">
+                 {% block global_actions %}
+                    {% block new_action %}           
+                        <div class="button-action">
+                            <a class="btn btn-primary action-new" href="report" target="_self">Relevee</a>
+                        </div>
+                        <div class="button-action">
+                            <a class="btn btn-primary action-new" href="export{{_entity_config.name}}CSV" target="_self">Exporter</a>
+                       </div>
+                    {% endblock new_action %}
+                {% endblock global_actions %}
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_start(form) }}
+    <div>  {{ form_row(form.Repreneurs, {'attr':{'class':'form-control'}}) }}</div><br />
+    <div>{{ form_row(form.Temps, {'attr':{'class':'form-control'}}) }}</div><br />
+    <p>{{ form_row(form.save, {'attr':{'class':'btn btn-primary action-save'}}) }}</p>
+    <p>{{ form_row(form.save2, {'attr':{'class':'btn btn-primary action-save'}}) }}</p>
+    {{ form_end(form) }}
+{% endblock content_header %}
+
+{% block main %}
+ 
+<div class="col-sm-7">
+    <div id="div_chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    {% if test %}
+        {{ gc_draw(ColumnChart, 'div_chart') }}
+    {% endif %}  
+
+    </script>   
+</div>
+{% endblock main %}

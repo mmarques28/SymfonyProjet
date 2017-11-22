@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+    
+{% block body %}
+    {{ dump() }}
+    <h1>List Chauffeurs</h1>
+    <div class="toggled" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/ticket">Tickets de pesage</a>
+                </li>
+                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/chauffeurs">Chauffeurs</a>
+                </li>
+                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/repreneurs">Repreneurs</a>
+                </li>
+                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/vehicules">Vehicules</a>
+                </li>
+                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/tournee">Tournees</a>
+                </li>
+                                <li>
+                    <a href="http://localhost/SymfonyProjet/web/app_dev.php/stats">Stats</a>
+                </li>
+             </ul>
+        </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                {% if action == 'showList' %} 
+                    <!-- Responsive table starts here -->
+                    <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <!-- Table starts here -->
+                        <table id="example" class="table table-hover table-mc-blue">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th> <button class="input" onclick="self.location='http://localhost/SymfonyProjet/web/app_dev.php/chauffeurs/add'">Add</button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for chauffeur in result %}
+                                    <tr>
+                                        <td data-title="ID">{{ chauffeur.id }}</td>
+                                        <td data-title="Nom">{{ chauffeur.Nom }}</td>
+                                        <td data-title="Prenom">{{ chauffeur.Prenom }}</td>
+                                        <td> <button class="input" onclick="self.location='http://localhost/SymfonyProjet/web/app_dev.php/chauffeurs/edit/{{ chauffeur.id }}'">edit</button>
+                                        <button class="input" onclick="self.location='http://localhost/SymfonyProjet/web/app_dev.php/chauffeurs/delete/{{ chauffeur.id }}'">delete</button>
+                                        </td>
+                                    </tr>  
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div>
+                        {{ form_start(form) }}   
+                            <div>{{ form_row(form.Nom, {'attr':{'class':'form-control'}}) }}</div>
+                            <div>{{ form_row(form.Prenom, {'attr':{'class':'form-control'}}) }}</div>
+                            <div>{{ form_row(form.save, {'attr':{'class':'input'}}) }}</div>
+                        {{ form_end(form) }}   
+                    </div> 
+                {% endif %}  
+            </div>   
+        </div>   
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ dump() }}
+    <h1>hello</h1>
+        <div class="col-sm-7">
+        <div class="global-actions">
+        {{ form_start(form) }}
+            {{ form_row(form.Repreneurs, {'attr':{'class':'form-control'}}) }}
+            {{ form_row(form.Temps, {'attr':{'class':'form-control'}}) }}
+            {{ form_row(form.save)}}
+        {{ form_end(form) }}
+        </div>
+        <button onclick="self.location='http://localhost/SymfonyProjet/web/app_dev.php/report'">Relevee</button> <br />
+    </div>
+<div class="col-sm-7">
+    <div id="div_chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    {% if test %}
+        {{ gc_draw(ColumnChart, 'div_chart') }}
+    {% endif %}  
+
+    </script>   
+</div>
+{% endblock %}         

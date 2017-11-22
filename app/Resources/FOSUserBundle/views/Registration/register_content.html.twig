@@ -1,0 +1,14 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h1>Inscrivez-vous!!</h1><br>
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input class="loginmodal-submit" type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+            <div class="login-help">
+                <a href="http://localhost/SymfonyProjet/web/app_dev.php/login">Connexion?!</a>
+            </div> 
+
