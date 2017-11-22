@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: e428ab802ebbda89514d7d4363e5f6dc6a347805
+    jrs_host:      127.0.0.1
+    jrs_port:      8080
+    jrs_base:      jasperserver
+    jrs_username:  jasperadmin
+    jrs_password:  jasperadmin
+    jrs_org_id:    null
